@@ -10,13 +10,11 @@ customtkinter.set_default_color_theme("dark-blue")
 #the theme can be dark blue, blue, or green
 
 screen = customtkinter.CTk()
+screen.title("Login and Registration")
 screen.geometry("500x350")
-#creating the screen size
+#creating the screen size and title
 master = screen
 
-def login():
-    print("Test")
-#When login is pressed "Test" is printed in the terminal
     
 frame = customtkinter.CTkFrame(master=screen)
 frame.pack(pady=20, padx=60, fill ="both", expand=True)
@@ -34,25 +32,27 @@ entry2 = customtkinter.CTkEntry(master=frame, placeholder_text="Password", show=
 #show = "*" encodes the password so no one can see it
 entry2.pack(pady=12, padx=10)
 
-loginB = customtkinter.CTkButton(master=frame, text="Login", command=login)
+def NewWindow():
+    new_window = customtkinter.CTkToplevel(screen)
+    new_window.title("Homescreen")
+    new_window.geometry("500x350")
+def exit():
+    screen.destroy(screen)
+    #closes down the window
+loginB = customtkinter.CTkButton(master=frame, text="Login", command=NewWindow)
+
+NewWindow.focus()
+NewWindow.grab_set()
+
+#self.testButton = Button(self, text=" test", command=lambda:[funct1(),funct2()])
+#Button(self, text="text", command=func_1()and func_2)
+
 loginB.pack(pady=12, padx=10)
 #The button which will move you onto the next page
-def login():
-    print("Test")
-#When login is pressed "Test" is printed in the terminal
 
 checkbox = customtkinter.CTkCheckBox(master=frame, text="Remember Me")
 checkbox.pack(pady=12, padx=10)
 #to ensure login details are remebered, e.g. on personal devices 
 
-#################################################################################################
-
-#It worked
-def NewWindow():
-    new_window = customtkinter.CTkToplevel(screen)
-    new_window.title("Homescreen")
-    new_window.geometry("500x350")
-btn = customtkinter.CTkButton(screen, text="Open", command=(NewWindow))
-btn.pack(pady=12, padx=10)
 
 screen.mainloop()
