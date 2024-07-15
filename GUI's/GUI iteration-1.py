@@ -36,23 +36,19 @@ def NewWindow():
     new_window = customtkinter.CTkToplevel(screen)
     new_window.title("Homescreen")
     new_window.geometry("500x350")
-def exit():
-    screen.destroy(screen)
-    #closes down the window
+    #new_window.grab_set()
+    #this means we cant use the login screen (focus is on the new screen)
+
+    screen.destroy()
+    #exits the main screen
+
+
 loginB = customtkinter.CTkButton(master=frame, text="Login", command=NewWindow)
-
-NewWindow.focus()
-NewWindow.grab_set()
-
-#self.testButton = Button(self, text=" test", command=lambda:[funct1(),funct2()])
-#Button(self, text="text", command=func_1()and func_2)
-
 loginB.pack(pady=12, padx=10)
 #The button which will move you onto the next page
 
 checkbox = customtkinter.CTkCheckBox(master=frame, text="Remember Me")
 checkbox.pack(pady=12, padx=10)
 #to ensure login details are remebered, e.g. on personal devices 
-
 
 screen.mainloop()
