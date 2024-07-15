@@ -39,11 +39,12 @@ def NewWindow():
     #new_window.grab_set()
     #this means we cant use the login screen (focus is on the new screen)
 
+def exit():
     screen.destroy()
     #exits the main screen
 
 
-loginB = customtkinter.CTkButton(master=frame, text="Login", command=NewWindow)
+loginB = customtkinter.CTkButton(master=frame, text="Login", command=lambda:[(NewWindow),(exit)])
 loginB.pack(pady=12, padx=10)
 #The button which will move you onto the next page
 
