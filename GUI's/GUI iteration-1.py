@@ -1,4 +1,6 @@
 import customtkinter
+from tkinter import *
+from tkinter.ttk import *
 #in normal tkinter::: root = tkinter.Tk()
 #in custom::: root = customtkinter.CTk 
 
@@ -10,10 +12,11 @@ customtkinter.set_default_color_theme("dark-blue")
 screen = customtkinter.CTk()
 screen.geometry("500x350")
 #creating the screen size
+master = screen
 
 def login():
     print("Test")
-#Defining the main screen
+#When login is pressed "Test" is printed in the terminal
     
 frame = customtkinter.CTkFrame(master=screen)
 frame.pack(pady=20, padx=60, fill ="both", expand=True)
@@ -34,9 +37,22 @@ entry2.pack(pady=12, padx=10)
 loginB = customtkinter.CTkButton(master=frame, text="Login", command=login)
 loginB.pack(pady=12, padx=10)
 #The button which will move you onto the next page
+def login():
+    print("Test")
+#When login is pressed "Test" is printed in the terminal
 
 checkbox = customtkinter.CTkCheckBox(master=frame, text="Remember Me")
 checkbox.pack(pady=12, padx=10)
 #to ensure login details are remebered, e.g. on personal devices 
+
+#################################################################################################
+
+#It worked
+def NewWindow():
+    new_window = customtkinter.CTkToplevel(screen)
+    new_window.title("Homescreen")
+    new_window.geometry("500x350")
+btn = customtkinter.CTkButton(screen, text="Open", command=(NewWindow))
+btn.pack(pady=12, padx=10)
 
 screen.mainloop()
