@@ -44,7 +44,8 @@ def exit():
     #exits the main screen
 
 
-loginB = customtkinter.CTkButton(master=frame, text="Login", command=lambda:[(NewWindow),(exit)])
+loginB = customtkinter.CTkButton(master=frame, text="Login", command=NewWindow)
+#command=lambda:[(NewWindow),(exit)])
 loginB.pack(pady=12, padx=10)
 #The button which will move you onto the next page
 
