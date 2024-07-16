@@ -2,6 +2,7 @@ import customtkinter
 from tkinter import *
 from tkinter.ttk import *
 import customtkinter as ctk
+from tkinter import messagebox
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
 
@@ -27,10 +28,10 @@ def exit():
     new_window.destroy()
 
 def help():
-    new_window.showinfo("Working on it...")
+    messagebox.showinfo("Working on it...")
 
 def settings():
-    new_window.showinfo("Working on it...")
+    messagebox.showinfo("Working on it...")
 
 
 more.add_cascade(label="More", menu=more_opt)
