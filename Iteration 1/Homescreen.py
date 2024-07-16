@@ -17,6 +17,7 @@ new_window.geometry("500x350")
     
 frame = ctk.CTkFrame(master=new_window)
 frame.pack(pady=5, padx=5, fill ="both", expand=True)
+#frame.grid()
 
 more = Menu(new_window)
 new_window.config(menu=more)
@@ -41,20 +42,21 @@ more_opt.add_separator()
 #adds a line dividing the above instructions and the ones below
 more_opt.add_command(label="Log Out", command=exit)
 
-#Different pages:
-def learn_page():
+
+#Different pages & their Buttons:
+def learn_pg():
     learn = ctk.CTkToplevel(new_window)
     learn.title("Start Learning Soon :)")
     learn.geometry("500x350")
+learning = ctk.CTkButton(master=frame, text="Learning", command=learn_pg)
+learning.pack(pady=12, padx=8)
 
-def progress():
+def progress_pg():
     progress = ctk.CTkToplevel(new_window)
     progress.title("Progress Page")
     progress.geometry("500x350")
-
-
-
-
+progress = ctk.CTkButton(master=frame, text="View Progress", command=progress_pg)
+progress.pack(pady=12, padx=2)
 
 ###############################################################
 new_window.mainloop()
