@@ -1,11 +1,12 @@
 import customtkinter
 from tkinter import *
 from tkinter.ttk import *
+import customtkinter as ctk
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
 
 
-new_window = customtkinter.CTk()
+new_window = ctk.CTk()
 new_window.title("Homescreen")
 new_window.geometry("500x350")
 #master = new_window
@@ -13,7 +14,7 @@ new_window.geometry("500x350")
 # TO BE INSERTED #
 ###############################################################
     
-frame = customtkinter.CTkFrame(master=new_window)
+frame = ctk.CTkFrame(master=new_window)
 frame.pack(pady=5, padx=5, fill ="both", expand=True)
 
 more = Menu(new_window)
@@ -41,12 +42,12 @@ more_opt.add_command(label="Log Out", command=exit)
 
 #Different pages:
 def learn_page():
-    learn = customtkinter.CTkToplevel(new_window)
+    learn = ctk.CTkToplevel(new_window)
     learn.title("Start Learning Soon :)")
     learn.geometry("500x350")
 
 def progress():
-    progress = customtkinter.CTkToplevel(new_window)
+    progress = ctk.CTkToplevel(new_window)
     progress.title("Progress Page")
     progress.geometry("500x350")
 
