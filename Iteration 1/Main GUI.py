@@ -39,6 +39,8 @@ def NewWindow():
     #new_window.grab_set()
     #this means we cant use the login screen (focus is on the new screen)
 
+    
+
 def exit():
     screen.destroy()
     #exits the main screen
