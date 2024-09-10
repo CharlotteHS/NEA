@@ -1,5 +1,5 @@
-import customtkinter
 from tkinter import *
+from customtkinter import *
 from tkinter.ttk import *
 import customtkinter as ctk
 from tkinter import messagebox
