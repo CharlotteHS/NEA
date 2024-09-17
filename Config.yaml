@@ -1,0 +1,3 @@
+path: C:\Users\xthec\OneDrive\Documents\GitHub\NEA\Iteration 1\Tensorflow\workspace\images
+train: images/lables
+val: images/lables

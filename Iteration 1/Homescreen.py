@@ -14,7 +14,7 @@ new_window.geometry("500x350")
 
 # TO BE INSERTED #
 ###############################################################
-    
+
 frame = ctk.CTkFrame(master=new_window)
 frame.pack(pady=5, padx=5, fill ="both", expand=True)
 #frame.grid()
