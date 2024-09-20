@@ -12,3 +12,6 @@ https://stackoverflow.com/questions/61205304/move-two-windows-together-tkinter
 
 (17/09/24)
 im gonna switch back to the og tutorial to see how he does the training of the models, and if theres a way around using this guys method cause i dont have enough time to mess around with the libraries cause python cant find them again.
+
+(20/9/24)
+for GUI 2 i might change the seperate screens to tabview using the function in customtkinter (in complex_example.py)
