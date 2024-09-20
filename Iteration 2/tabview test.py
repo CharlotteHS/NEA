@@ -23,6 +23,8 @@ label.pack(pady=12, padx=10)
 self.tabview = ctk.CTkTabview(frame, width=450)
 self.tabview = self.tabview.add("Homescreen")
 
-self.
+self.optionmenu_1 = ctk.CTkOptionMenu(self.tabview.tab("CTkTabview"), dynamic_resizing=False,
+                                      values=["Value 1", "Value 2", "Value Long Long Long"])
+
 
 screen.mainloop()
