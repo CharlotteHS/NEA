@@ -23,9 +23,11 @@ class App(ctk.CTk):
         screen.tabview.pack(pady=0, padx=0)
         screen.tabview.add("Homescreen")
         screen.tabview.add("Learning")
+        screen.optionmenu = ctk.CTkOptionMenu(screen.tabview.tab("Learning"), dynamic_resizing=False,
+                                                values=["Alphabet", "Numbers", "Animals"])
+        screen.optionmenu.pack(pady=1, padx=1)
         screen.tabview.add("Progress")
 
-        screen.optionmenu_1 = ctk.CTkOptionMenu(screen.tabview.tab("Homescreen"), screen.textbox = ctk.CTkTextbox(screen, width=500, height=350))
 
 
 if __name__ == "__main__":

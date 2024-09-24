@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter.ttk import *
 import customtkinter as ctk
 from tkinter import messagebox
+import time
 #in normal tkinter::: root = tkinter.Tk()
 #in custom::: root = customtkinter.CTk 
 
@@ -34,7 +35,6 @@ entry2 = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*")
 #show = "*" encodes the password so no one can see it
 entry2.pack(pady=12, padx=10)
 
-############ PAGE INFO INSERTED HERE ########################
 
 def NewWindow():
     new_window = ctk.CTkToplevel(screen)
@@ -43,7 +43,6 @@ def NewWindow():
     #new_window.grab_set()
     #this means we cant use the login screen (focus is on the new screen)
 
-    #INSERT#
     frame = ctk.CTkFrame(master=new_window)
     frame.pack(pady=5, padx=5, fill ="both", expand=True)
     #frame.grid()
@@ -87,15 +86,16 @@ def NewWindow():
     progress = ctk.CTkButton(master=frame, text="View Progress", command=progress_pg)
     progress.pack(pady=12, padx=2)
 
+    time.sleep(2)
+    frame.destroy(screen)
+
     new_window.mainloop()
     
-
-
     
 
 def exit():
     screen.destroy()
-    #exits the main screen
+    #exits the home screen
 
 
 loginB = ctk.CTkButton(master=frame, text="Login", command=NewWindow)
@@ -106,5 +106,8 @@ loginB.pack(pady=12, padx=10)
 checkbox = ctk.CTkCheckBox(master=frame, text="Remember Me")
 checkbox.pack(pady=12, padx=10)
 #to ensure login details are remebered, e.g. on personal devices 
+
+#def shutDown():
+    
 
 screen.mainloop()
