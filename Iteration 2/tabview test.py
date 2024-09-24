@@ -12,21 +12,20 @@ class App(ctk.CTk):
         super().__init__()
 
         #configuring the window and frame layout
-        screen.title("Login and Registration")
+        screen.title("Main Screen")
         screen.geometry("500x350")
         frame = customtkinter.CTkFrame(master=screen)
         frame.pack(pady=0, padx=0, fill ="both", expand=True)
 
         #creating tabview
         screen.tabview = ctk.CTkTabview(frame, width=500, height=350)
+        #size of the tabview frame
         screen.tabview.pack(pady=0, padx=0)
         screen.tabview.add("Homescreen")
         screen.tabview.add("Learning")
         screen.tabview.add("Progress")
 
-
-        screen.optionmenu_1 = ctk.CTkOptionMenu(screen.tabview.tab("Homescreen"), dynamic_resizing=False,
-                                            values=["Value 1", "Value 2", "Value Long Long Long"])
+        screen.optionmenu_1 = ctk.CTkOptionMenu(screen.tabview.tab("Homescreen"), screen.textbox = ctk.CTkTextbox(screen, width=500, height=350))
 
 
 if __name__ == "__main__":
