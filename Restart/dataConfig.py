@@ -1,0 +1,1 @@
+model.train(data='custom_dataset.yaml', epochs=50, imgsz=640)
