@@ -1,5 +1,5 @@
-train: Restart/Tensorflow/labels (annotated)/train/
-val: Restart/Tensorflow/labels (annotated)/validation/
+train: Dataset/labels (annotated)/train/
+val: Dataset/Tensorflow/labels (annotated)/val/
 #setting up paths to the training and validation files to setup training
 
 #class names and their corrosponding class id
