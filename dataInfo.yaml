@@ -1,5 +1,10 @@
-train: Dataset/labels (annotated)/train/
-val: Dataset/Tensorflow/labels (annotated)/val/
+train: "Dataset/labels (annotated)/train"
+#Dataset/labels (annotated)/train/
+#C:\Users\xthec\OneDrive\Documents\GitHub\NEA\datasets\Dataset\labels (annotated)\train
+val: "Dataset/labels (annotated)/val"
+#Dataset/Tensorflow/labels (annotated)/val/
+#C:\Users\xthec\OneDrive\Documents\GitHub\NEA\datasets\Dataset\labels (annotated)\val
+
 #setting up paths to the training and validation files to setup training
 
 #class names and their corrosponding class id

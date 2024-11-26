@@ -10,5 +10,9 @@
 #C:\Users\xthec>.\venv\Scripts\activate
 #The system cannot find the path specified.
 
+import os
+
+val_path = r"C:/Users/xthec/OneDrive/Documents/GitHub/NEA/datasets/Dataset/labels (annotated)/val"
+print(os.listdir(val_path))
 
 
