@@ -14,5 +14,5 @@ import os
 
 val_path = r"C:/Users/xthec/OneDrive/Documents/GitHub/NEA/datasets/Dataset/labels (annotated)/val"
 print(os.listdir(val_path))
-
+#working
 
