@@ -1,0 +1,8 @@
+train: C:\Users\xthec\OneDrive\Documents\GitHub\NEA\datasets\Dataset\images\train
+val: C:\Users\xthec\OneDrive\Documents\GitHub\NEA\datasets\Dataset\images\val
+
+nc: 5
+#Number of classes
+
+names: ['a', 'b', 'c', 'd', 'e']
+#Class names
