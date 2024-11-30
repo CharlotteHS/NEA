@@ -16,5 +16,5 @@ val_path = r"C:/Users/xthec/OneDrive/Documents/GitHub/NEA/datasets/Dataset/label
 print(os.listdir(val_path))
 #working
 
-#yolo task=detect mode=val model=runs/detect/train/weights/best.pt data=dataInfo.yaml
+#yolo task=detect mode=val model=runs/detect/train2/weights/best.pt data=dataInfo.yaml
 #yolo task=detect mode=predict model=runs/detect/train/weights/best.pt source=Restart/Tensorflow/workspace/testimages
