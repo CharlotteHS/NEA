@@ -1,6 +1,6 @@
 task: detect
 mode: train
-model: yolov8n.pt
+model: runs/detect/train/weights/last.pt
 data: dataInfo.yaml
 epochs: 100
 time: null
@@ -13,7 +13,7 @@ cache: false
 device: null
 workers: 8
 project: null
-name: train3
+name: train4
 exist_ok: false
 pretrained: true
 optimizer: auto
@@ -103,4 +103,4 @@ erasing: 0.4
 crop_fraction: 1.0
 cfg: null
 tracker: botsort.yaml
-save_dir: runs\detect\train3
+save_dir: runs\detect\train4
