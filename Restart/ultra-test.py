@@ -8,7 +8,7 @@
 #yolo task=detect mode=train model=yolov8n.pt data=dataInfo.yaml epochs=100 imgsz=640 batch=16
 
 #C:\Users\xthec>.\venv\Scripts\activate
-#The system cannot find the path specified.
+#broken: the system cannot find the path specified????.
 
 import os
 
