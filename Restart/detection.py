@@ -14,9 +14,6 @@ if not cap.isOpened():
 while True:
     ret, screen = cap.read()
 
-    cv2.imshow("Screen", screen)
-    cv2.waitKey(1)
-
     show = model(screen)
     #initiates object detection
 
@@ -31,3 +28,6 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 #shuts the webcam screen down
+
+
+
