@@ -3,15 +3,8 @@ import cv2
 import numpy as np
 
 
-model = YOLO('yolov8n.pt')
-#loading the yolo nano pretrained model
-model.export(format='onnx')
-#exporting to ONNX and creating a file
-
-model_path = 'yolov8n.onnx'
-net = cv2.dnn.readNetFromONNX(model_path)
-
-
+model = YOLO('runs/detect/train3/weights/best.pt')
+#loading the pretrained model which holds the best ver. of our data
 
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
@@ -23,6 +16,13 @@ while True:
 
     cv2.imshow("Screen", screen)
     cv2.waitKey(1)
+
+    show = model(screen)
+    #initiates object detection
+
+    annotations = show[0].plot()
+    cv2.imshow("BSL Detector", annotations)
+    #shows detection on the screen
     
     if cv2.waitKey(1) & 0xFF == ord('q'): #
         #shuts the window down when you press q
@@ -30,3 +30,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+#shuts the webcam screen down
