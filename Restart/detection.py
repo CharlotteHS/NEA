@@ -21,13 +21,10 @@ while True:
     cv2.imshow("BSL Detector", annotations)
     #shows detection on the screen
     
-    if cv2.waitKey(1) & 0xFF == ord('q'): #
-        #shuts the window down when you press q
+    if cv2.waitKey(1) & 0xFF == ord('x'): #
+        #shuts the window down when you press x
         break
 
 cap.release()
 cv2.destroyAllWindows()
 #shuts the webcam screen down
-
-
-
