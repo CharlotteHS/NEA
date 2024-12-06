@@ -72,12 +72,39 @@ def NewWindow():
 
 
     #Different pages & their Buttons:
+    gap = ctk.CTkLabel(master=frame, text="")
+    gap.pack(pady=32, padx=10)
+    #so that the buttons are in the middle
+
     def learn_pg():
         learn = ctk.CTkToplevel(new_window)
         learn.title("Start Learning Soon :)")
         learn.geometry("500x350")
+
+        more = Menu(learn)
+        learn.config(menu=more)
+        more_opt = Menu(more, tearoff=0)
+        #setting bar at the top of the screen
+
+        #The options:
+        def exit():
+            learn.destroy()
+
+        def help():
+            messagebox.showinfo("Working on it...")
+
+        def settings():
+            messagebox.showinfo("Working on it...")
+
+        more.add_cascade(label="More", menu=more_opt)
+        more_opt.add_command(label="Settings", command=settings)
+        more_opt.add_command(label="Help", command=help)
+        more_opt.add_separator()
+        more_opt.add_command(label="Log Out", command=exit)
+
     learning = ctk.CTkButton(master=frame, text="Learning", command=learn_pg)
     learning.pack(pady=12, padx=8)
+
 
     def progress_pg():
         progress = ctk.CTkToplevel(new_window)
@@ -85,6 +112,7 @@ def NewWindow():
         progress.geometry("500x350")
     progress = ctk.CTkButton(master=frame, text="View Progress", command=progress_pg)
     progress.pack(pady=12, padx=2)
+    #### NEED TO MAKE A COMING SOON POP UP EITHER ON THE PAGE OR BEFORE ###
 
     time.sleep(2)
     frame.destroy(screen)
