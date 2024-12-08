@@ -76,6 +76,7 @@ def NewWindow():
     gap.pack(pady=32, padx=10)
     #so that the buttons are in the middle
 
+    ########################################################################
     def learn_pg():
         learn = ctk.CTkToplevel(new_window)
         learn.title("Start Learning Soon :)")
@@ -102,9 +103,18 @@ def NewWindow():
         more_opt.add_separator()
         more_opt.add_command(label="Log Out", command=exit)
 
+        def display_message():
+            messagebox.showinfo("Denied","Coming Soon")
+            #title = 'denied', message = 'Coming soon'
+            #if the button is pressed this procedure will run
+
+        c1 = Button(screen,text="f-j",command=display_message)
+        c1.place(x=189, y=200)
+        #placement of the button using coordinates
+
     learning = ctk.CTkButton(master=frame, text="Learning", command=learn_pg)
     learning.pack(pady=12, padx=8)
-
+    ########################################################################
 
     def progress_pg():
         progress = ctk.CTkToplevel(new_window)

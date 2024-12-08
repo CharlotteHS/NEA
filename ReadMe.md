@@ -15,3 +15,11 @@ im gonna switch back to the og tutorial to see how he does the training of the m
 
 (20/9/24)
 for GUI 2 i might change the seperate screens to tabview using the function in customtkinter (in complex_example.py)
+
+######################################################################
+
+learning page needs to have text identifiying some of the sign categories
+the under the alphabet categories have buttons saying a-e, f-j, k-o, etc.
+when these buttons are pressed on they come up with a pop up saying the dont work
+the a-e button should load up the detection screen and alongside it a picture of what the sign is supposed to look like
+scores over 60 are recorded and if 3 are recorded it moves onto the next sign
