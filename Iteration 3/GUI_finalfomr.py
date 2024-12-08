@@ -38,7 +38,7 @@ entry2 = ctk.CTkEntry(master=frame, placeholder_text="Password", show="*")
 #show = "*" encodes the password so no one can see it
 entry2.pack(pady=12, padx=10)
 
-
+#creating a second page
 def NewWindow():
     new_window = ctk.CTkToplevel(screen)
     new_window.title("Homescreen")
@@ -80,19 +80,23 @@ def NewWindow():
     #so that the buttons are in the middle
 
     ########################################################################
+    
+    #learning page leading in from the login page
     def learn_pg():
         #def learn_pg(sep):
         #super().__init__()
 
+        #creating title and sizing
         learn = ctk.CTkToplevel(new_window)
         learn.title("Start Learning Soon :)")
         learn.geometry("500x350")
 
+
+        #help and settings stuff
         more = Menu(learn)
         learn.config(menu=more)
         more_opt = Menu(more, tearoff=0)
         #setting bar at the top of the screen
-
         #The options:
         def exit():
             learn.destroy()
@@ -102,7 +106,6 @@ def NewWindow():
 
         def settings():
             messagebox.showinfo("Working on it...")
-
         more.add_cascade(label="More", menu=more_opt)
         more_opt.add_command(label="Settings", command=settings)
         more_opt.add_command(label="Help", command=help)
@@ -113,7 +116,7 @@ def NewWindow():
         #sep.sidebar_frame = ctk.CTkFrame(sep, width=140, corner_radius=0)
         #sep.sidebar_frame
 
-
+        #creating the rest of the alphabet buttons
         def display_message():
             messagebox.showinfo("Denied","Coming Soon")
             #title = 'denied', message = 'Coming soon'
@@ -123,57 +126,16 @@ def NewWindow():
         c2.place(x=189, y=110)
         #placement of the button using coordinates
 
-
         #Object Detection Here ↓
         def a_e():
-            abcde = ctk.CTkToplevel(learn_pg)
+            print("Loading")
+            abcde = ctk.CTkToplevel(screen)
             abcde.title("BSL Alphabet: A to E")
             abcde.geometry("600x400")
 
-            #inputting the detection.py work here
 
-            model = YOLO('runs/detect/train3/weights/best.pt')
-            #loading the pretrained model which holds the best ver. of our data
-
-            cap = cv2.VideoCapture(0)
-            if not cap.isOpened():
-                print("Error")
-                exit()
-
-            while True:
-                ret, abcde = cap.read()
-
-                show = model(abcde)
-                #initiates object detection
-
-                annotations = show[0].plot()
-                cv2.imshow("BSL Detector", annotations)
-                #shows detection on the screen
-                
-                if cv2.waitKey(1) & 0xFF == ord('x'): #
-                    #shuts the window down when you press x
-                    break
-
-            cap.release()
-            cv2.destroyAllWindows()
-            #shuts the webcam screen down
-            #end of detection.py file
-
-            web_frame = ctk.CTkFrame(abcde, width=500, height=350)
-            web_frame.pack(side=ctk.LEFT, padx=12, pady=10)
-            #creating a frame in the window for the webcam to be placed in
-
-            web_frame = ctk.Label(web_frame)
-            web_frame.pack()
-            #lavelling the webcam feed
-
-            
-
-
-        c1 = ctk.CTkButton(learn,text="a-e",command=a_e)
+        c1 = ctk.CTkButton(learn,text="a_e",command=a_e)
         c1.place(x=189, y=80)
-
-
 
     learning = ctk.CTkButton(master=frame, text="Learning", command=learn_pg)
     learning.pack(pady=12, padx=8)
@@ -187,10 +149,12 @@ def NewWindow():
     progress.pack(pady=12, padx=2)
     #### NEED TO MAKE A COMING SOON POP UP EITHER ON THE PAGE OR BEFORE ###
 
-    time.sleep(2)
-    frame.destroy(screen)
+    #time.sleep(2)
+    #frame.destroy(screen)
 
     new_window.mainloop()
+
+
     
     
 
