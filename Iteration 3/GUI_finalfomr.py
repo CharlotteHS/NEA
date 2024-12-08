@@ -127,6 +127,12 @@ def NewWindow():
         c2 = ctk.CTkButton(learn,text="f-j",command=display_message)
         c2.place(x=189, y=110)
         #placement of the button using coordinates
+        c2 = ctk.CTkButton(learn,text="k-o",command=display_message)
+        c2.place(x=189, y=140)
+        c2 = ctk.CTkButton(learn,text="p-t",command=display_message)
+        c2.place(x=189, y=170)
+        c2 = ctk.CTkButton(learn,text="u-z",command=display_message)
+        c2.place(x=189, y=200)
 
         #Object Detection Here ↓
         def a_e():
@@ -140,64 +146,29 @@ def NewWindow():
             if not cap.isOpened():
                 print("Error")
                 exit()
-            #opening webcam
 
-
-            abcde = ctk.CTkToplevel(frame)
-            abcde.title("BSL Alphabet: A to E")
-            abcde.geometry("650x450")
-
-            web_frame = ctk.CTkFrame(abcde, width=450, height=350)
-            web_frame.pack(side=ctk.LEFT, padx=12, pady=10)
-            #creating a frame in the window for the webcam to be placed in
-            web_label = ctk.CTkLabel(web_frame)
-            web_label.pack()
-            #labelling the webcam feed
-
-
-            def check_frame():
-                ret, frame = cap.read()
+            while True:
+                ret, abcde = cap.read()
                 if not ret:
-                    print("Fetch Error")
-                    cap.release
-                    return
+                    break
 
-
-                show = model(frame)
+                show = model(abcde)
                 #initiates object detection
 
                 annotations = show[0].plot()
-                cv2.imshow("BSL Alphabet: A to E", annotations)
+                cv2.imshow("BSL Detector", annotations)
                 #shows detection on the screen
-
-                annotated_frame = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
-                img = Image.fromarray(annotated_frame)
-                imgtk = ImageTk.PhotoImage(image=img)
-                #converting frame for display
                 
-                web_label.imgTk = imgtk
-                web_label.configure(image=imgtk)
-                #updating the video label
+                if cv2.waitKey(1) & 0xFF == ord('x'): #
+                    #shuts the window down when you press x
+                    break
 
-                abcde.after(10, check_frame)
-                #schedule frame update
+            cap.release()
+            cv2.destroyAllWindows()
+            #shuts the webcam screen down
+            #end of detection.py file
 
-            check_frame()
-            abcde.mainloop()
-            #starting loop
-
-            if cv2.waitKey(1) & 0xFF == ord('x'): #
-                #shuts the window down when you press x
-                cap.release()
-                cv2.destroyAllWindows()
-                #shuts the webcam screen down
-                #end of detection.py file
-            
-
-            learn.mainloop()
-
-
-        c1 = ctk.CTkButton(learn,text="a_e",command=a_e)
+        c1 = ctk.CTkButton(learn,text="a-e",command=a_e)
         c1.place(x=189, y=80)
 
     learning = ctk.CTkButton(master=frame, text="Learning", command=learn_pg)
