@@ -3,9 +3,12 @@ from tkinter import *
 from tkinter.ttk import *
 import customtkinter as ctk
 from tkinter import messagebox
-import time
 #in normal tkinter::: root = tkinter.Tk()
 #in custom::: root = customtkinter.CTk 
+import time
+from ultralytics import YOLO
+import cv2
+import numpy as np
 
 ctk.set_appearance_mode("dark")
 #this sets the background to dark, light, or system
@@ -78,6 +81,9 @@ def NewWindow():
 
     ########################################################################
     def learn_pg():
+        #def learn_pg(sep):
+        #super().__init__()
+
         learn = ctk.CTkToplevel(new_window)
         learn.title("Start Learning Soon :)")
         learn.geometry("500x350")
@@ -103,14 +109,71 @@ def NewWindow():
         more_opt.add_separator()
         more_opt.add_command(label="Log Out", command=exit)
 
+
+        #sep.sidebar_frame = ctk.CTkFrame(sep, width=140, corner_radius=0)
+        #sep.sidebar_frame
+
+
         def display_message():
             messagebox.showinfo("Denied","Coming Soon")
             #title = 'denied', message = 'Coming soon'
             #if the button is pressed this procedure will run
 
-        c1 = Button(screen,text="f-j",command=display_message)
-        c1.place(x=189, y=200)
+        c2 = ctk.CTkButton(learn,text="f-j",command=display_message)
+        c2.place(x=189, y=110)
         #placement of the button using coordinates
+
+
+        #Object Detection Here ↓
+        def a_e():
+            abcde = ctk.CTkToplevel(learn_pg)
+            abcde.title("BSL Alphabet: A to E")
+            abcde.geometry("600x400")
+
+            #inputting the detection.py work here
+
+            model = YOLO('runs/detect/train3/weights/best.pt')
+            #loading the pretrained model which holds the best ver. of our data
+
+            cap = cv2.VideoCapture(0)
+            if not cap.isOpened():
+                print("Error")
+                exit()
+
+            while True:
+                ret, abcde = cap.read()
+
+                show = model(abcde)
+                #initiates object detection
+
+                annotations = show[0].plot()
+                cv2.imshow("BSL Detector", annotations)
+                #shows detection on the screen
+                
+                if cv2.waitKey(1) & 0xFF == ord('x'): #
+                    #shuts the window down when you press x
+                    break
+
+            cap.release()
+            cv2.destroyAllWindows()
+            #shuts the webcam screen down
+            #end of detection.py file
+
+            web_frame = ctk.CTkFrame(abcde, width=500, height=350)
+            web_frame.pack(side=ctk.LEFT, padx=12, pady=10)
+            #creating a frame in the window for the webcam to be placed in
+
+            web_frame = ctk.Label(web_frame)
+            web_frame.pack()
+            #lavelling the webcam feed
+
+            
+
+
+        c1 = ctk.CTkButton(learn,text="a-e",command=a_e)
+        c1.place(x=189, y=80)
+
+
 
     learning = ctk.CTkButton(master=frame, text="Learning", command=learn_pg)
     learning.pack(pady=12, padx=8)
