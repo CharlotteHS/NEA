@@ -137,28 +137,36 @@ def NewWindow():
         #Object Detection Here ↓
         def a_e():
             a_e_window = ctk.CTkToplevel(screen)
-            a_e_window.title("BSL Detector - a-e")
-            a_e_window.geometry("800x600")
-            
-            # Create a label to display the video feed
-            video_label = ctk.CTkLabel(a_e_window, text="")
-            video_label.pack(fill="both", expand=True)
-            
-            # Add example pictures
-            example_frame = ctk.CTkFrame(a_e_window)
-            example_frame.pack(pady=10, fill="x")
-            example_label = ctk.CTkLabel(example_frame, text="Replicate these BSL signs:")
-            example_label.pack()
+            a_e_window.title("Learning page:'a' to 'e'")
+            a_e_window.geometry("850x500")
 
-            # Assuming you have example images saved
-            example_images = ["example_a.jpg", "example_b.jpg", "example_c.jpg"]
-            for image_path in example_images:
+            ae_frame = ctk.CTkFrame(a_e_window)
+            ae_frame.pack(fill="both", expand=True, padx=10, pady=10)
+            
+            #webcam detection screen
+            web_frame = ctk.CTkFrame(ae_frame, width=400, height=600)
+            web_frame.pack(side=tk.LEFT, fill="both", expand=True, padx=5, pady=5)
+            web_label = ctk.CTkLabel(web_frame, text="") 
+            web_label.pack(fill="both", expand=True)
+            
+            #adding images to be used as guidance
+            #example images being loaded
+            ex_frame = ctk.CTkFrame(ae_frame, width=290, height=600)
+            ex_frame.pack(side=tk.RIGHT, fill="y", padx=10, pady=10)
+            #pushing the iamges into a frame on the right
+            ex_label = ctk.CTkLabel(ex_frame, text="Replicate these BSL signs:")
+            ex_label.pack(pady=5)
+
+            ex_images = ["a.jpg", "b.jpg", "c.jpg", "d.jpg", "e.jpg"]
+            #the images held in the NEA folder will be shown on the screen
+            for image_path in ex_images:
                 try:
-                    img = Image.open(image_path).resize((80, 80))  # Adjust size as needed
+                    img = Image.open(image_path).resize((100, 100))
                     img = ImageTk.PhotoImage(img)
-                    img_label = ctk.CTkLabel(example_frame, image=img, text="")
-                    img_label.image = img  # Keep a reference to avoid garbage collection
-                    img_label.pack(side="left", padx=5)
+                    img_label = ctk.CTkLabel(ex_frame, image=img, text="")
+                    img_label.image = img 
+                    img_label.pack(side="top", padx=5)
+                    #side=top instead of left so that the images are stacked on top op eachother
                 except Exception as e:
                     print(f"Error loading image {image_path}: {e}")
 
@@ -189,8 +197,8 @@ def NewWindow():
                 frame_pil = Image.fromarray(frame_rgb)
                 frame_tk = ImageTk.PhotoImage(frame_pil)
                 
-                video_label.configure(image=frame_tk)
-                video_label.image = frame_tk
+                web_label.configure(image=frame_tk)
+                web_label.image = frame_tk
                 
                 # Schedule next frame update
                 a_e_window.after(10, update_video)
