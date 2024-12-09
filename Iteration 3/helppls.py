@@ -12,6 +12,7 @@ from ultralytics import YOLO
 import cv2
 import numpy as np
 from PIL import Image, ImageTk
+import os
 
 ctk.set_appearance_mode("dark")
 #this sets the background to dark, light, or system
@@ -157,17 +158,34 @@ def NewWindow():
             #pushing the iamges into a frame on the right
             ex_label = ctk.CTkLabel(ex_frame, text="Replicate these BSL signs:")
             ex_label.pack(pady=5)
+            
+            ex_images = [
+    "C:/Users/xthec/OneDrive/Documents/GitHub/NEA/Iteration 3/a.jpg",
+    "C:/Users/xthec/OneDrive/Documents/GitHub/NEA/Iteration 3/b.jpg",
+    "C:/Users/xthec/OneDrive/Documents/GitHub/NEA/Iteration 3/c.jpg",
+    "C:/Users/xthec/OneDrive/Documents/GitHub/NEA/Iteration 3/d.jpg",
+    "C:/Users/xthec/OneDrive/Documents/GitHub/NEA/Iteration 3/e.jpg"
+]
 
-            ex_images = ["a.jpg", "b.jpg", "c.jpg", "d.jpg", "e.jpg"]
+            for image_path in ex_images:
+                if os.path.exists(image_path):
+                    print(f"File exists: {image_path}")
+                else:
+                    print(f"File does NOT exist: {image_path}")
+            #ensuring the file paths exist
+
+
             #the images held in the NEA folder will be shown on the screen
             for image_path in ex_images:
                 try:
-                    img = Image.open(image_path).resize((100, 100))
+                    img = Image.open(image_path).resize((250, 250))
                     img_ctk = CTkImage(light_image=img, dark_image=img)
-                    img_label = ctk.CTkLabel(ex_frame, image=img, text="")
+                    img_label = ctk.CTkLabel(ex_frame, image=img_ctk, text="")
                     img_label.image = img_ctk
                     img_label.pack(side="top", padx=5)
-                    #side=top instead of left so that the images are stacked on top op eachother
+                    #side=top instead of left so that the images are stacked on top op each other
+                    print(f"Image {image_path} loaded successfully")
+                    #checking file path exists and is being used correctly
                 except Exception as e:
                     print(f"Error loading image {image_path}: {e}")
 
@@ -182,7 +200,6 @@ def NewWindow():
                 return
 
             def update_video():
-                """Update video frame with detection annotations."""
                 ret, frame = cap.read()
                 if not ret:
                     cap.release()
@@ -206,9 +223,10 @@ def NewWindow():
 
                 #for storing the high level detections
                 if hlvl_detect:
-                    print("Hogh Accuracy Detected::: ")
+                    print("High Accuracy Detected::: ")
                     for detection in hlvl_detect:
                         print(detection)
+
 
                 
                 frame_rgb = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
