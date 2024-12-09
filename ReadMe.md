@@ -22,9 +22,9 @@ learning page needs to have text identifiying some of the sign categories ♥
 when these buttons are pressed on they come up with a pop up saying the dont work ♥
 
 What needs to be done now ↓
-the a-e button should load up the detection screen and alongside it a picture of what the sign is supposed to look like
+the a-e button should load up the detection screen and alongside it a picture of what the sign is supposed to look like ♥
 scores over 60 are recorded and if 3 are recorded it moves onto the next sign
-the under the alphabet categories have buttons saying a-e, f-j, k-o, etc. 
+the under the alphabet categories have buttons saying a-e, f-j, k-o, etc. ♥
 
 then the evaluation
 then the gui design

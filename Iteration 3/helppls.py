@@ -1,4 +1,5 @@
 import customtkinter
+from customtkinter import CTkImage
 from tkinter import *
 import tkinter as tk
 from tkinter.ttk import *
@@ -127,12 +128,12 @@ def NewWindow():
         c2 = ctk.CTkButton(learn,text="f-j",command=display_message)
         c2.place(x=189, y=110)
         #placement of the button using coordinates
-        c2 = ctk.CTkButton(learn,text="k-o",command=display_message)
-        c2.place(x=189, y=140)
-        c2 = ctk.CTkButton(learn,text="p-t",command=display_message)
-        c2.place(x=189, y=170)
-        c2 = ctk.CTkButton(learn,text="u-z",command=display_message)
-        c2.place(x=189, y=200)
+        c3 = ctk.CTkButton(learn,text="k-o",command=display_message)
+        c3.place(x=189, y=140)
+        c4 = ctk.CTkButton(learn,text="p-t",command=display_message)
+        c4.place(x=189, y=170)
+        c5 = ctk.CTkButton(learn,text="u-z",command=display_message)
+        c5.place(x=189, y=200)
 
         #Object Detection Here ↓
         def a_e():
@@ -162,9 +163,9 @@ def NewWindow():
             for image_path in ex_images:
                 try:
                     img = Image.open(image_path).resize((100, 100))
-                    img = ImageTk.PhotoImage(img)
+                    img_ctk = CTkImage(light_image=img, dark_image=img)
                     img_label = ctk.CTkLabel(ex_frame, image=img, text="")
-                    img_label.image = img 
+                    img_label.image = img_ctk
                     img_label.pack(side="top", padx=5)
                     #side=top instead of left so that the images are stacked on top op eachother
                 except Exception as e:
@@ -188,14 +189,32 @@ def NewWindow():
                     a_e_window.destroy()
                     return
                 
-                # Perform detection
-                results = model(frame)
-                annotated_frame = results[0].plot()
+               
+                annotations = model(frame)
+                annotated_frame = annotations[0].plot()
+                #does the detection
+
+                hlvl_detect = []
+                for detect in annotations[0].boxes:
+                    if detect.conf[0] > 0.6:
+                        #checking if the confidence score shown is above 60%
+                        detection = {"label": detect.cls[0],
+                                     "confidence": detect.conf[0],
+                                     "coordinates": detect.xyxy[0].tolist()
+                        }
+                        hlvl_detect.append(detection)
+
+                #for storing the high level detections
+                if hlvl_detect:
+                    print("Hogh Accuracy Detected::: ")
+                    for detection in hlvl_detect:
+                        print(detection)
+
                 
-                # Convert to RGB and display using PIL.ImageTk
                 frame_rgb = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
                 frame_pil = Image.fromarray(frame_rgb)
                 frame_tk = ImageTk.PhotoImage(frame_pil)
+                #converted to RGB and displayed using PIL.ImageTk
                 
                 web_label.configure(image=frame_tk)
                 web_label.image = frame_tk
